@@ -40,3 +40,12 @@ arm-none-eabi-objcopy -O binary input_elf output_binary
 dd if=/dev/zero of=flash.bin bs=4096 count=4096
 dd if=add.bin of=flash.bin bs=4096 conv=notruc
 ```
+
+**QEMU basic command**
+> basic QEMU command
+```
+info registers @ display current registers
+xp /<count><format><size> @ display physical memory
+xp /4i @ disaply as arm instruction set
+xp /4x @ disaply as hexdeicmal format.
+```
