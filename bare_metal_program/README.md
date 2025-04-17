@@ -52,3 +52,26 @@ xp /<count><format><size> @ display physical memory
 xp /4i @ disaply as arm instruction set
 xp /4x @ disaply as hexdeicmal format.
 ```
+
+**Linker process**
+> Important role of linker
+>1. symbol resolution
+>2. reolocation
+> * section merging
+> * section placement
+>
+> symbol resolution is occurred with linking with multiple object files.
+> relocation is occurred with section merging and section placement.
+> relocation is the process of changing addresses already assigned to labels.
+>
+> what is section mergin ?
+> * merge text sections from multiple object files.
+>
+> why section placement? why do we change address ?
+> * because we want to place some section(data) to RAM address, and some section(text) to FLASH address.
+
+
+
+
+
+
