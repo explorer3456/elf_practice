@@ -1,0 +1,16 @@
+         U _start
+00000004 t arr
+00000007 t eoa
+00000008 t start
+00000014 t stop
+00000020 T sum
+00000024 t loop
+00010038 T __bss_end__
+00010038 T _bss_end__
+00010038 T __bss_start
+00010038 T __bss_start__
+00010038 T __data_start
+00010038 T _edata
+00010038 T __end__
+00010038 T _end
+00080000 B _stack
