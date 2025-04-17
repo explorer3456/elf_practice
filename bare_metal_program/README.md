@@ -24,3 +24,19 @@ arm-none-eabi-nm -n add.elf ( check symbol table )
 T is global symbol. It can be viewed from other files
 t is local symbol. It cannot be viewed from other files.
 ```
+
+**Convert ELF file into binary**
+> since we want to test with bare metal programming environment,
+> we cannot load ELF file into QEMU directly. 
+> we should load binary file( text section and data section only ) into QEMU.
+> In order to do that, we should use objcopy to convert ELF file into binary.
+```
+arm-none-eabi-objcopy -O binary input_elf output_binary
+```
+
+> Also, in order to QEMU connex machine to run, you should put your image as 16MB flash image
+> because connex machine only ditects 16MB image for flash image.
+```
+dd if=/dev/zero of=flash.bin bs=4096 count=4096
+dd if=add.bin of=flash.bin bs=4096 conv=notruc
+```
