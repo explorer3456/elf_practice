@@ -1,0 +1,6 @@
+00000000 a nul
+00000004 t str
+00000010 t start
+00000018 t loop
+00000028 a test
+0000002c t stop
