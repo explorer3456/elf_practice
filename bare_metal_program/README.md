@@ -29,9 +29,12 @@ t is local symbol. It cannot be viewed from other files.
 > since we want to test with bare metal programming environment,
 > we cannot load ELF file into QEMU directly. 
 > we should load binary file( text section and data section only ) into QEMU.
+> you can see the size of text and data section using readelf -t elffile to check text and data section size.
 > In order to do that, we should use objcopy to convert ELF file into binary.
 ```
 arm-none-eabi-objcopy -O binary input_elf output_binary
+
+cf) readelf -t input_elf  // this show the size of elf section size.
 ```
 
 > Also, in order to QEMU connex machine to run, you should put your image as 16MB flash image
