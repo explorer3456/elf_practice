@@ -9,7 +9,7 @@ irq:    b   _irq
 fiq:    b   _fiq
 
 _reset:
-        b  .
+        b  start
 _undef:
         b  .
 _swi:
