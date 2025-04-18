@@ -3,9 +3,10 @@ SECTIONS {
         .text : {
                 *(.text);
         }
+        etext = .;
 
         . = 0xA0000000;
-        .data : {
+        .data : AT (etext) {
                 *(.data);
-        }
+        } 
 }
