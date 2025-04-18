@@ -1,6 +1,10 @@
 SECTIONS {
 
         . = 0x0;
+        .vector : {
+                *(.vectors);
+        }
+
         .text : {
                 *(.text);
         }
