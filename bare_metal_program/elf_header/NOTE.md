@@ -148,5 +148,90 @@ Key to Flags:
 > So, section header itself is not necessary for program execution.
 > What matters during program execution is program header.
 
+# important information from program header
+**Program header contents**
+> Those segment offset, information ( VMA, LMA ) and Flag( Read/Write/Executable ) are located at program header.
+> Not that program header is necessary for running program, wheras section header is needed for linking object files.
+**What is segment**
+> Code segment
+> some sections are combined into some segment
+> ex) text and rodata sections are combined into segment 0, and this segment is loadable
+> ( Loadable segment can be loaded into memory and can be executed ).
+>
+> Data segment
+> data section and bss section are combined into other segment
+> 
+> Some section may not be included in creating segment.
+> Also, seom section such as interpreter can be included in more than one segments.
+>
+> Loadable segment will be exectued by OS.
+> Linux kernel will fetch ELF header and Program header from ELF file.
+> then handle program execution.
+>
+> How to check segment information?
+```
+readelf -l elf_file
+```
+> output example
+> Note that 
+```
+jhkim@jhkim-Inspiron-14-5430:linker_script$ readelf -l c_prog.elf
 
+Elf file type is EXEC (Executable file)
+Entry point 0x9c
+There are 2 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x010000 0x00000000 0x00000000 0x0010c 0x0010c R E 0x10000
+  LOAD           0x020000 0xa0000000 0x0000010c 0x00018 0x0001c RW  0x10000
+
+ Section to Segment mapping:
+  Segment Sections...
+   00     .text .rodata
+   01     .data .bss
+
+```
+**BSS section difference on file and memory**
+> You can notice that data segment size is different in Filesize(LMA) and Memsize(VMA).
+> Because LMA doesn't count BSS section size because it is zero.
+> VMA does count BSS section, which is initialized to zero by startup code etc.
+>
+> Note that filesize and Memsize difference
+```
+jhkim@jhkim-Inspiron-14-5430:elf_header$ cat ../linker_script/dseg_test_large_bss.segment
+
+Elf file type is EXEC (Executable file)
+Entry point 0x9c
+There are 2 program headers, starting at offset 52
+
+Program Headers:
+  Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+  LOAD           0x010000 0x00000000 0x00000000 0x0010c 0x0010c R E 0x10000
+  LOAD           0x020000 0xa0000000 0x0000010c 0x00018 0x0201c RW  0x10000
+
+```
+**Useful debug tools to analyze ELF file**
+> you can use dumpelf elf_file to check offset of certain components( Section/Program header).
+> From ELF file
+> Then, use hexedit like tools to edit or modify header
+> You can see that section header #15 is located at offset of 0x22B44 from c_prog.elf
+```
+dumpelf c_prog.elf
+
+/* Section Header #15 '.shstrtab' 0x22B44 */
+{
+	.sh_name      = 17         ,
+	.sh_type      = 3          , /* [SHT_STRTAB] */
+	.sh_flags     = 0          ,
+	.sh_addr      = 0x0        ,
+	.sh_offset    = 141392     , /* (bytes) */
+	.sh_size      = 154        , /* (bytes) */
+	.sh_link      = 0          ,
+	.sh_info      = 0          ,
+	.sh_addralign = 1          ,
+	.sh_entsize   = 0
+},
+
+```
 
