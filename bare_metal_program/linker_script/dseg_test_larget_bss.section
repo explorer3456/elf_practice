@@ -1,0 +1,25 @@
+There are 16 section headers, starting at offset 0x208ec:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        00000000 010000 000108 00  AX  0   0  4
+  [ 2] .rodata           PROGBITS        00000108 010108 000004 00   A  0   0  4
+  [ 3] .data             PROGBITS        a0000000 020000 000018 00  WA  0   0  4
+  [ 4] .bss              NOBITS          a0000018 020018 002004 00  WA  0   0  4
+  [ 5] .debug_info       PROGBITS        00000000 020018 0000ea 00      0   0  1
+  [ 6] .debug_abbrev     PROGBITS        00000000 020102 00009c 00      0   0  1
+  [ 7] .debug_aranges    PROGBITS        00000000 0201a0 000040 00      0   0  8
+  [ 8] .debug_line       PROGBITS        00000000 0201e0 0000bd 00      0   0  1
+  [ 9] .debug_str        PROGBITS        00000000 02029d 0000e5 01  MS  0   0  1
+  [10] .comment          PROGBITS        00000000 020382 000033 01  MS  0   0  1
+  [11] .ARM.attributes   ARM_ATTRIBUTES  00000000 0203b5 000028 00      0   0  1
+  [12] .debug_frame      PROGBITS        00000000 0203e0 000028 00      0   0  4
+  [13] .symtab           SYMTAB          00000000 020408 000380 10     14  47  4
+  [14] .strtab           STRTAB          00000000 020788 0000c8 00      0   0  1
+  [15] .shstrtab         STRTAB          00000000 020850 00009a 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
