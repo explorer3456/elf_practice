@@ -87,6 +87,22 @@ Key to Flags:
 > This explains why customzied sections such as ".vectors" were not included in objcopy output.
 > because vectors section was not defined as allocatable or executable in linker script.
 
+**DWARF data**
+> DWARF is an acronym for "Debugging With Arbitrary Record Formats"
+> When a program is compiled with debug information (with the -g flag).
+> this information will be written into special .debug_ ELF sections 
+>
+> if you compile code with -g option, the DWARF information is stored in 
+> .debug_info, .debug_line
+> information
+```
+  [ 5] .debug_info       PROGBITS        00000000 020018 0000c7 00      0   0  1
+  [ 6] .debug_abbrev     PROGBITS        00000000 0200df 000082 00      0   0  1
+  [ 7] .debug_aranges    PROGBITS        00000000 020168 000040 00      0   0  8
+  [ 8] .debug_line       PROGBITS        00000000 0201a8 0000bd 00      0   0  1
+  [ 9] .debug_str        PROGBITS        00000000 020265 0000df 01  MS  0   0  1
+```
+
 **Symbol table**
 > there are two types of symbol table.
 > .symtab
